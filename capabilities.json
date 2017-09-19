@@ -1,0 +1,138 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Axis",
+            "name": "category",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Measure",
+            "name": "measure",
+            "kind": "Measure"
+        }
+    ],
+    "supportsHighlight": true,
+    "objects": {
+        "chartSettings":{
+            "displayName": "Chart settings",
+            "properties": {
+                "yMin": {
+                    "displayName": "Y-min",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "yMax": {
+                    "displayName": "Y-max",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "lineWidth": {
+                    "displayName": "Line width (px)",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "axisWidth": {
+                    "displayName": "Axis width (px)",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "yTickFormat": {
+                    "displayName": "y-tick format",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "None",
+                                "value": ""
+                            },
+                            {
+                                "displayName": "Thousand",
+                                "value": "K"
+                            },
+                            {
+                                "displayName": "Millions",
+                                "value": "M"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "dataPoint": {
+            "displayName": "Data colors",
+            "properties": {
+                "defaultColor": {
+                    "displayName": "Default color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "showAllDataPoints": {
+                    "displayName": "Show all",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fill": {
+                    "displayName": "Fill",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fillRule": {
+                    "displayName": "Color saturation",
+                    "type": {
+                        "fill": {}
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Text Size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "category"
+                    },
+                    "dataReductionAlgorithm": {
+                        "top": {
+                            "count": 100000
+                        }
+                    }
+                },
+                "values": {
+                    "select": [
+                        {
+                            "bind": {
+                                "to": "measure"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "sorting": {
+        "default": {}
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "visual": {
+    "name": "incrementally-highlighted-multiline-chart",
+    "displayName": "Incrementally Highlighted Multiline Chart",
+    "guid": "ihmlchBA81A7E587554835AA40084C1EBACAF9",
+    "visualClassName": "Visual",
+    "version": "1.0.0",
+    "description": "",
+    "supportUrl": "",
+    "gitHubUrl": "https://github.com/KristofferBerge/pbiviz-incrementally-highlighted-multiline-chart"
+  },
+  "apiVersion": "1.7.0",
+  "author": {
+    "name": "Kristoffer Møgster Berge",
+    "email": "kristoffer.berge@gmail.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [
+    "node_modules/powerbi-visuals-utils-dataviewutils/lib/index.js",
+    "node_modules/d3/d3.min.js"
+  ],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": "dependencies.json",
+  "stringResources": []
+}
