@@ -87,7 +87,7 @@ module powerbi.extensibility.visual {
             const yScale = d3.scale.linear()
                 .range([options.viewport.height - horizontalMargin, horizontalMargin])
                 .domain([minVertical, maxVertical + verticalValuePadding]);
-            const yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(d => { return this.formatTicks(d, chartSettings.yTickFormat) })
+            const yAxis = d3.svg.axis().scale(yScale).orient("left").tickFormat(d => { return this.formatTicks(d, chartSettings.yTickFormat) }).ticks(chartSettings.yTicks)
 
             // Removing old chart
             let old = d3.select("#chartsvg").remove();

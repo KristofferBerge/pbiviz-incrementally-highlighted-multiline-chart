@@ -44,6 +44,8 @@ module powerbi.extensibility.visual {
 
     // Either "K","M" or "" to indicate to show numbers in millions, thousands or as is
     public yTickFormat: string = "";
+    // Number of y ticks
+    public yTicks: number = 5;
   }
 
   export class dataPointSettings {
