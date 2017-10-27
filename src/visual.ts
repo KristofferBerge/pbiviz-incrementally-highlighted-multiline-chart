@@ -66,7 +66,7 @@ module powerbi.extensibility.visual {
             let maxVertical = chartSettings.yMax != undefined ? chartSettings.yMax : vm.dataMax;
             let minVertical = chartSettings.yMin != undefined ? chartSettings.yMin : vm.dataMin;
 
-            let verticalValuePadding = 10; //TODO: Could be a setting or percentage
+            let verticalValuePadding = 0; //TODO: Could be a setting or percentage
 
 
             // console.log("Vertical domain = [" + minVertical + "," + maxVertical + "]");
