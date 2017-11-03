@@ -106,27 +106,41 @@ module powerbi.extensibility.visual {
             const line = d3.svg.line()
                 .x(d => { return xScale((d as any).category) })
                 .y(d => { return yScale((d as any).value.valueOf() as number); });
-
+            const legend = (color: string, description: string) => {
+                let e = document.createElement("span");
+                e.setAttribute("class", "legendElement");
+                d3.select(e)
+                    .append("svg")
+                    .attr("height", "1em")
+                    .attr("width", "1em")
+                    .append("circle")
+                    .attr("cx", "0.5em")
+                    .attr("cy", "0.5em")
+                    .attr("r", "0.5em")
+                    .attr("fill", color)
+                let t = document.createElement("span");
+                t.innerHTML = description;
+                e.appendChild(t);
+                return e;
+            }
+            let legendElement = document.createElement("div")
+            legendElement.setAttribute("class", "legend");
+            document.getElementById("chart").appendChild(legendElement);
+            let palette = this.host.colorPalette as any;
             // Adding each dataset as a line in the svg-element
             vm.dataSeries.forEach((d, i) => {
+                let color = palette.colors[i].value;                
                 svg.append("g")
                     .attr("class", "line")
                     .append("path")
                     .attr("fill", "none")
-                    .attr("stroke", () => {
-                        // The exposed getColor method sometimes returns an array where all values are the same color
-                        // This is a problem...
-                        //return this.colorPalette.getColor("" + i).value
-
-                        // Although not accessable in the typescript typings, we can cast the palette as any and access the raw color array at runtime
-                        // This works, but is probably not the best way to solve the problem
-                        let t = this.host.colorPalette as any;
-                        return t.colors[i].value;
-                    })
+                    .attr("stroke", color)
                     .attr("stroke-linejoin", "round")
                     .attr("stroke-linecap", "round")
                     .attr("stroke-width", dataLineWidth)
                     .attr("d", line(d.dataPoints as any));
+                    let t = this.host.colorPalette as any;
+                    legendElement.appendChild(legend(color, d.name));
             })
 
             // x-axis
@@ -226,6 +240,7 @@ module powerbi.extensibility.visual {
             }
             for (let n = 0; n < dataValues.length; n++) {
                 const series = {
+                    name: dataValues[n].source.displayName,                    
                     dataPoints: []
                 }
                 // Creating values for each series matching the length of either longest series or category

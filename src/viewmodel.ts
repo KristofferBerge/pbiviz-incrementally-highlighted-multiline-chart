@@ -6,6 +6,7 @@ module powerbi.extensibility.visual {
     }
 
     export interface DataSeries {
+        name:string;        
         dataPoints: Array<DataSeriesDataPoint>;
     }
 
